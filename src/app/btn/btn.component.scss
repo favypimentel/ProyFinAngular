@@ -1,0 +1,94 @@
+$primary-background-color: #008cba;
+$primary-color: white;
+
+$secondary-background-color: #4caf50;
+$secondary-color: white;
+
+$error-background-color: #d27979;
+$error-color: white;
+
+$disabled-background-color: #efefef;
+$disabled-color: black;
+
+$normal-border: 23%;
+$normal-text-shadow: 20%;
+
+$hover-background: 5%;
+$hover-text-shadow: 25%;
+
+$active-background: 10%;
+
+.app-btn {
+  transition: all 0.3s ease;
+
+  display: inline-block;
+
+  padding: 6px 10px;
+  margin: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 2px 2px 4px rgba(black, 0.4);
+
+  &.primary {
+    color: $primary-color;
+
+    background-color: $primary-background-color;
+    text-shadow: 1px 1px 2px darken($primary-background-color, $normal-text-shadow);
+    border: 1px solid darken($primary-background-color, $normal-border);
+
+    &:hover, &:focus {
+      background-color: darken($primary-background-color, $hover-background);
+      text-shadow: 1px 1px 2px darken($primary-background-color, $hover-text-shadow);
+    }
+    &:active {
+      background-color: darken($primary-background-color, $active-background);
+      text-shadow: 1px 1px 2px black;
+      box-shadow: inset 1px 1px 2px 0 black;
+    }
+  }
+
+  &.secondary {
+    color: $secondary-color;
+
+    background-color: $secondary-background-color;
+    text-shadow: 1px 1px 2px darken($secondary-background-color, $normal-text-shadow);
+    border: 1px solid darken($secondary-background-color, $normal-border);
+
+    &:hover, &:focus {
+      background-color: darken($secondary-background-color, $hover-background);
+      text-shadow: 1px 1px 2px darken($secondary-background-color, $hover-text-shadow);
+    }
+    &:active {
+      background-color: darken($secondary-background-color, $active-background);
+      text-shadow: 1px 1px 2px black;
+      box-shadow: inset 1px 1px 2px 0 black;
+    }
+  }
+
+  &.error {
+    color: $error-color;
+
+    background-color: $error-background-color;
+    text-shadow: 1px 1px 2px darken($error-background-color, $normal-text-shadow);
+    border: 1px solid darken($error-background-color, $normal-border);
+
+    &:hover, &:focus {
+      background-color: darken($error-background-color, $hover-background);
+      text-shadow: 1px 1px 2px darken($error-background-color, $hover-text-shadow);
+    }
+    &:active {
+      background-color: darken($error-background-color, $active-background);
+      text-shadow: 1px 1px 2px black;
+      box-shadow: inset 1px 1px 2px 0 black;
+    }
+  }
+
+  &.disabled {
+    color: lighten($disabled-color, 40%);
+    border: 1px solid darken($disabled-background-color, $normal-border);
+    background-color: $disabled-background-color;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,15 @@
+<a
+  href="#"
+  role="button"
+  class="app-btn"
+
+  title="{{title}}"
+
+  (click)="_click()"
+  [ngClass]="[
+    !disabled ? type : '',
+    disabled ? 'disabled' : ''
+  ]"
+>
+  {{title}}
+</a>

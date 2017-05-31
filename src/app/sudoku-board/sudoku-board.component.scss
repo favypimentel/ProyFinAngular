@@ -1,0 +1,67 @@
+.app-sudoku-board {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-flow: column;
+  margin: 7px auto;
+
+  .row {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-flow: row;
+    .cell {
+      flex: 1;
+      display: flex;
+      flex-flow: column;
+      height: 100%;
+      border: 1px solid black;
+      .cell-row {
+        flex: 1;
+        display: flex;
+        flex-flow: row;
+        width: 100%;
+
+        .cell-row-cell {
+          flex: 1;
+          display: flex;
+          flex-flow: column;
+          justify-content: center;
+          height: 100%;
+          border: 1px solid black;
+          text-align: center;
+          font-size: 20px;
+          cursor: pointer;
+
+          .known {
+            user-select: none;
+            font-weight: bold;
+          }
+
+          .guessed {
+            color: blue;
+            text-align: center;
+            // border: none;
+            font-size: inherit;
+          }
+
+          .hilighted {
+            color: white;
+            text-shadow: 1px 1px 4px rgba(black, 1), -1px -1px 4px rgba(purple, 1);
+            transition: all ease 0.5s;
+          }
+
+          .hilighted.guessed {
+            font-weight: bold;
+            text-shadow: -1px -1px 4px rgba(black, 1), 1px 1px 4px rgba(blue, 1);
+            transition: all ease 0.5s;
+          }
+
+
+        }
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,23 @@
+<div class="app-sudoku-board">
+  <div class="row" *ngFor="let row of sudokuTemplate; let i = index">
+    <div class="cell" *ngFor="let cell of row; let j = index">
+      <div class="cell-row" *ngFor="let cellRow of cell; let x = index">
+        <div
+          class="cell-row-cell"
+          *ngFor="let cellRowCell of cellRow; let y = index"
+          (click)="_selectCell(i, j, x, y)"
+        >
+          <div
+            [ngClass]="[
+              _anyCellGuess(i, j, x, y) ? 'guessed' : 'known',
+              sudokuBoard[i][j][x][y] && sudokuBoard[i][j][x][y] === selectedValue ? 'hilighted' : ''
+            ]"
+            attr.data-title="{{cellRowCell || sudokuBoard[i][j][x][y]}}"
+          >
+            {{cellRowCell || sudokuBoard[i][j][x][y]}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

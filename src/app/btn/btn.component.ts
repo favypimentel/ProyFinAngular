@@ -24,4 +24,11 @@ export class BtnComponent implements OnInit {
     }
   }
 
+  _classes =  () => {
+    const possibleClasses = [
+      !this.disabled ? `btn-${this.type}` : null,
+      this.disabled ? 'disabled' : null
+    ];
+    return possibleClasses.filter((cls) => cls !== null).join(' ');
+  }
 }

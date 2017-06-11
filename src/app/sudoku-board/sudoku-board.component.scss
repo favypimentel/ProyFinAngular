@@ -10,12 +10,14 @@
     flex: 1;
     display: flex;
     flex-flow: row;
+
     .cell {
       flex: 1;
       display: flex;
       flex-flow: column;
       height: 100%;
       border: 1px solid black;
+
       .cell-row {
         flex: 1;
         display: flex;
@@ -33,6 +35,11 @@
           font-size: 20px;
           cursor: pointer;
 
+          &.selected {
+            transition: all ease 0.5s;
+            box-shadow: 2px 2px 6px rgba(black, 0.8);
+          }
+
           .known {
             user-select: none;
             font-weight: bold;
@@ -41,7 +48,6 @@
           .guessed {
             color: blue;
             text-align: center;
-            // border: none;
             font-size: inherit;
           }
 

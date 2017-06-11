@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { SudokuContainerComponent } from '../sudoku-container/sudoku-container.component';
 import { SudokuBoardComponent } from '../sudoku-board/sudoku-board.component';
 import { SudokuService } from '../sudoku.service';
+import { NumberSelectorComponent } from '../number-selector/number-selector.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { SudokuService } from '../sudoku.service';
   ],
   declarations: [
     SudokuContainerComponent,
-    SudokuBoardComponent
+    SudokuBoardComponent,
+    NumberSelectorComponent
   ],
   providers: [SudokuService]
 })

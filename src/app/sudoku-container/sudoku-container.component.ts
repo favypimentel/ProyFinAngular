@@ -1,5 +1,7 @@
+/* Core Imports */
 import { Component, OnInit } from '@angular/core';
 
+/* Classes */
 import { Game } from '../game';
 
 @Component({
@@ -10,19 +12,17 @@ import { Game } from '../game';
 export class SudokuContainerComponent implements OnInit {
 
   game: Game;
-  toggleHints: boolean;
+  hintsEnabled: boolean;
 
   constructor() {
+    this.hintsEnabled = false;
     this.game = new Game();
-    this.game.modified = false;
-    this.toggleHints = false;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   _reset = () => {
-    console.log('Not yet implemented');
+    this.game.reset();
   }
 
   _new = () => {
@@ -30,7 +30,7 @@ export class SudokuContainerComponent implements OnInit {
   }
 
   _toggleHints = () => {
-    this.toggleHints = !this.toggleHints;
+    this.hintsEnabled = !this.hintsEnabled;
   }
 
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { SudokuService } from '../sudoku.service';
+import { Component, OnInit, HostListener, Input } from '@angular/core';
+
+import { Game } from '../game';
 
 @Component({
   selector: 'app-sudoku-board',
@@ -8,27 +9,20 @@ import { SudokuService } from '../sudoku.service';
 })
 export class SudokuBoardComponent implements OnInit {
 
-  sudokuTemplate: any;
-  sudokuBoard: any;
-  selectedValue: number = null;
-  selectedCell: any = null;
+  @Input() game: Game;
 
-  constructor(sudokuService: SudokuService) {
-    this.sudokuTemplate = sudokuService._generateBoard();
-    this.sudokuBoard = sudokuService._cloneBoard(this.sudokuTemplate);
-  }
+  constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   _clearSelectedValue = () => {
-    this.selectedValue = null;
+    this.game.selectedValue = null;
   }
 
   _selectCell = (i, j, x, y) => {
-    const value = this.sudokuBoard[i][j][x][y];
-    this.selectedCell = this._translateCell(i, j, x, y);
-    this.selectedValue = value;
+    const value = this.game.progressBoard[i][j][x][y];
+    this.game.selectedCell = this._translateCell(i, j, x, y);
+    this.game.selectedValue = value;
   }
 
   _translateCell = (i, j, x, y) => {
@@ -37,24 +31,34 @@ export class SudokuBoardComponent implements OnInit {
   }
 
   _anyCellGuess = (i, j, x, y) => {
-    return this.sudokuBoard[i][j][x][y] !== this.sudokuTemplate[i][j][x][y];
+    return this.game.progressBoard[i][j][x][y] !== this.game.initialBoard[i][j][x][y];
+  }
+
+  _isSelectedCell = (i, j, x, y) => {
+    return this.game.selectedCell ? (
+      i === this.game.selectedCell.i &&
+      j === this.game.selectedCell.j &&
+      x === this.game.selectedCell.x &&
+      y === this.game.selectedCell.y
+    ) : false;
   }
 
   @HostListener('document:keyup', ['$event'] )
   onKey = ($event: KeyboardEvent) => {
-    if (this.selectedCell) {
+    if (this.game.selectedCell) {
       const allowedInput = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'Backspace'];
       if (allowedInput.includes($event.key)) {
-        const { i, j, x, y } = this.selectedCell;
+        const { i, j, x, y } = this.game.selectedCell;
         if ($event.key === 'Backspace') {
-          this.sudokuBoard[i][j][x][y] = this.sudokuTemplate[i][j][x][y];
+          this.game.progressBoard[i][j][x][y] = this.game.initialBoard[i][j][x][y];
         } else {
           const value = parseInt($event.key, 10);
-          this.sudokuBoard[i][j][x][y] = value;
-          this.selectedValue = value;
+          if (!this.game.initialBoard[i][j][x][y]) {
+            this.game.progressBoard[i][j][x][y] = value;
+            this.game.selectedValue = value;
+          }
         }
       }
     }
   }
-
 }

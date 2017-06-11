@@ -3,20 +3,18 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class SudokuService {
 
-  _board = [];
-
   constructor() { }
 
-  _getBoard = () => {
-    return this._board;
-  }
-
-  _cloneBoard = (board) => {
+  cloneBoard = (board) => {
     return this.arrayClone(board);
   }
 
-  _generateBoard = () => {
-    return this._board = [
+  maskBoard = (board, difficulty) => {
+    return board;
+  }
+
+  getNewBoard = () => {
+    return [
       [
         [
           [2, null, null],

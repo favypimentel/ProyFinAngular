@@ -2,8 +2,14 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template:`
+      <app-header></app-header>
+      <app-sudoku-container></app-sudoku-container>
+       <app-footer></app-footer>
+    
+    
+    
+  `
 })
 export class AppComponent {
   title = 'Sudoku';
